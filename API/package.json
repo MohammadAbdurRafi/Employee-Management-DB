@@ -2,7 +2,7 @@
   "name": "employee-management-db-api",
   "version": "1.0.0",
   "description": "Employee Management API with PostgreSQL",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "dev": "nodemon index"
   },

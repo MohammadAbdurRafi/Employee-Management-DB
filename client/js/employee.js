@@ -14,6 +14,7 @@ const getEmployeeIdParam = () => {
 
 const getEmployee = () => {
   const employeeId = getEmployeeIdParam();
+  console.log(employeeId);
   const url = `${API_URL}${employeeId}`;
   fetch(url, {
     method: 'GET',

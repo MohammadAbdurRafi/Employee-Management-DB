@@ -158,7 +158,7 @@ app.get('/api/employees/:employee_id', async (req, res) => {
       [employee_id]
     );
     if (result.rowCount > 0) {
-      res.status(200).json(result.rows);
+      res.status(200).json(result.rows[0]);
     } else {
       res.status(404).json({ message: 'Selected employee was not found!' });
     }
