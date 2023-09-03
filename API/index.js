@@ -25,6 +25,10 @@ const getExtension = (mimeType) => {
 const app = express();
 const multerMiddleware = multer({ storage: storage });
 app.use(express.json());
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  next();
+});
 app.use('/images', express.static('images'));
 const port = 4000;
 
