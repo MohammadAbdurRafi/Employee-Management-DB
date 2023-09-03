@@ -202,4 +202,60 @@ app.post(
   }
 );
 
+/**
+ * PUT: Update an existing employee
+ * http://localhost:4000/api/employees/:employee_id
+ */
+app.put(
+  '/api/employees/:employee_id',
+  multerMiddleware.single('employee_image'),
+  async (req, res) => {
+    try {
+      const employee_id = req.params.employee_id;
+      const {
+        designation_id,
+        employee_name,
+        job_title,
+        salary,
+        email,
+        phone_number,
+        home_address,
+      } = req.body;
+      const result = await pool.query(
+        'UPDATE employees SET designation_id = $1, employee_name = $2, job_title = $3, salary = $4, employee_image = $5, email = $6, phone_number = $7, home_address = $8 WHERE employee_id = $9;',
+        [
+          designation_id,
+          employee_name,
+          job_title,
+          salary,
+          req.file.path.replace('\\', '/'),
+          email,
+          phone_number,
+          home_address,
+          employee_id,
+        ]
+      );
+      res.status(200).json({ message: 'Employee updated successfully.' });
+    } catch (error) {
+      res.status(500).json({ error: error });
+    }
+  }
+);
+
+/**
+ * DELETE: Delete an existing employee
+ * http://localhost:4000/api/employees/employee:id
+ */
+app.delete('/api/employees/:employee_id', async (req, res) => {
+  try {
+    const employee_id = req.params.employee_id;
+    await pool.query('DELETE FROM employees WHERE employee_id = $1;', [
+      employee_id,
+    ]);
+    res.status(200).json({ message: 'Employee deleted successfully.' });
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+});
+
 app.listen(port, () => console.log(`Server is running on port: ${port}`));
