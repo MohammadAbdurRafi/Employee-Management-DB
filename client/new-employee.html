@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Employee</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css"
+      integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/new-employee.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="text-center mt-3">
+        <h1>New Employee</h1>
+        <h3>Let's add a new employee!</h3>
+      </header>
+
+      <a href="/client/app.html">
+        <button class="btn btn-primary btn-block mt-3">Back</button>
+      </a>
+
+      <form action="">
+        <label for="" class="form-label mt-3">Designation:</label>
+        <select name="" id="form-employee-designation-id" class="form-select">
+          <option selected>Choose a designation</option>
+          <option value="1">Certified Executive Officer</option>
+          <option value="2">Certified Virtualization Professional</option>
+          <option value="3">Certified Software Tester</option>
+        </select>
+
+        <label for="" class="form-label mt-3">Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="form-employee-name"
+          placeholder="Name"
+        />
+
+        <label for="" class="form-label mt-3">Job Title:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="form-employee-job-title"
+          placeholder="Job Title"
+        />
+
+        <label for="" class="form-label mt-3">Salary:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="form-employee-salary"
+          placeholder="Salary"
+        />
+
+        <label for="" class="form-label mt-3">Email Address:</label>
+        <input
+          type="email"
+          class="form-control"
+          id="form-employee-email"
+          placeholder="Email Address"
+        />
+
+        <label for="" class="form-label mt-3"
+          >Phone Number (include dashes) :</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="form-employee-phone-number"
+          placeholder="Phone Number"
+        />
+
+        <label for="" class="form-label mt-3">Home Address:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="form-employee-address"
+          placeholder="Home Address"
+        />
+
+        <label for="" class="form-label mt-3">Choose Image</label>
+        <input
+          type="file"
+          class="form-control"
+          id="form-employee-image"
+          accept="image/*"
+        />
+
+        <button
+          type="button"
+          class="btn btn-success mt-3"
+          id="form-employee-submit"
+          onclick="submitNewEmployee()"
+        >
+          Add Employee
+        </button>
+      </form>
+    </div>
+
+    <script src="js/new-employee.js"></script>
+  </body>
+</html>

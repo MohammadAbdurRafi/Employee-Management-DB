@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Management with Database</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css"
+      integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header
+        class="vh-100 d-flex justify-content-center align-items-center mb-4"
+      >
+        <h1>Employee Management</h1>
+      </header>
+
+      <div id="employees" class="mb-3"></div>
+
+      <div id="add-employee" class="mb-3">
+        <a href="/client/new-employee.html">
+          <button type="button" class="btn btn-success">Add an Employee</button>
+        </a>
+        <a href="/client/new-designation.html">
+          <button type="button" class="btn btn-primary">
+            Add a Designation
+          </button>
+        </a>
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>

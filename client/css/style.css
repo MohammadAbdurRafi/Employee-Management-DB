@@ -1,0 +1,9 @@
+header {
+    background-image: url(/client/assets/banner.jpg);
+    display: block;
+    filter: brightness(100%);
+}
+
+header h1 {
+    color: white;
+}
