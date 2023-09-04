@@ -4,8 +4,56 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css"
+      integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/new-employee.css" />
   </head>
   <body>
+    <div class="container">
+      <header class="text-center mt-3">
+        <h1>New Designation</h1>
+        <h3>Let's add a new designation!</h3>
+      </header>
+
+      <a href="/client/index.html">
+        <button class="btn btn-primary btn-block mt-3">Back</button>
+      </a>
+
+      <form action="">
+        <label for="" class="form-label mt-3">Designation Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="form-designation-name"
+          placeholder="Enter the new designation's name here"
+        />
+
+        <label for="" class="form-label mt-3">Designation Description:</label>
+        <textarea
+          class="form-control"
+          name=""
+          id="form-designation-description"
+          cols="30"
+          rows="10"
+          placeholder="Enter the new designation's description here"
+        ></textarea>
+
+        <button
+          type="button"
+          class="btn btn-success mt-3"
+          id="form-employee-submit"
+          onclick="submitNewDesignation()"
+        >
+          Add Designation
+        </button>
+      </form>
+    </div>
+
     <script src="js/new-designation.js"></script>
   </body>
 </html>
