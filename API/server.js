@@ -1,5 +1,6 @@
 const express = require('express');
 const multer = require('multer');
+const cors = require('cors');
 const { Pool } = require('pg');
 
 const storage = multer.diskStorage({
@@ -24,11 +25,12 @@ const getExtension = (mimeType) => {
 
 const app = express();
 const multerMiddleware = multer({ storage: storage });
+app.use(cors());
 app.use(express.json());
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  next();
-});
+// app.use((req, res, next) => {
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   next();
+// });
 app.use('/images', express.static('images'));
 const port = 4000;
 
@@ -84,6 +86,7 @@ app.get('/api/designations/:designation_id', async (req, res) => {
  */
 app.post('/api/designations', async (req, res) => {
   try {
+    console.log(req.body);
     const { designation_name, designation_description } = req.body;
     const result = await pool.query(
       'INSERT INTO designations (designation_name, designation_description) VALUES ($1, $2) RETURNING designation_id;',
