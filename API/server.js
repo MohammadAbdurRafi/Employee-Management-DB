@@ -1,7 +1,8 @@
 const express = require('express');
 const multer = require('multer');
 const cors = require('cors');
-const { Pool } = require('pg');
+const { Pool, Client } = require('pg');
+require('dotenv').config();
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -32,15 +33,66 @@ app.use(express.json());
 //   next();
 // });
 app.use('/images', express.static('images'));
-const port = 4000;
+
+const port = process.env.PORT;
+
+let db_hostname;
+let db_username;
+let db_database;
+let db_password;
+let db_port;
+
+if (process.env.NODE_ENV === 'development') {
+  db_hostname = process.env.LOCALDB_HOST;
+  db_username = process.env.LOCALDB_USER;
+  db_database = process.env.LOCALDB_DATABASE;
+  db_password = process.env.LOCALDB_PASSWORD;
+  db_port = process.env.LOCALDB_PORT;
+} else {
+  db_hostname = process.env.PRODDB_HOST;
+  db_username = process.env.PRODDB_USER;
+  db_database = process.env.PRODDB_DATABASE;
+  db_password = process.env.PRODDB_PASSWORD;
+  db_port = process.env.PRODDB_PORT;
+}
 
 const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'employeesdb',
-  password: 'Adrian_8231',
-  port: 5432,
+  user: db_username,
+  host: db_hostname,
+  database: db_database,
+  password: db_password,
+  port: db_port,
 });
+
+async function connectToDB() {
+  try {
+    const client = new Client({
+      user: db_username,
+      host: db_hostname,
+      database: db_database,
+      password: db_password,
+      port: db_port,
+    });
+
+    await client.connect();
+
+    const dbRowCount = (await client.query('SELECT NOW()')).rowCount;
+
+    if (dbRowCount > 0) {
+      console.log(`Database successfully connected to the server`);
+    } else {
+      console.log(`Unable to connect database to the server`);
+    }
+
+    await client.end();
+  } catch (error) {
+    console.log(
+      `An error occured while connecting to the database. Please see the following: ${error}`
+    );
+  }
+}
+
+connectToDB();
 
 /**
  * GET: Read all designations
